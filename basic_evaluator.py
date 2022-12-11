@@ -98,6 +98,7 @@ class BasicEvaluator(AbstractEvaluator):
         logging.info(f"Result with ID {request_id} received! Result was correct: {is_correct}")
         self.db.add_evaluation_result(request_id, is_correct)
         # TODO: save to db
+        # TODO websockets: call rabbitmq publish
 
     def on_request_received(self, body):
         """ Process an incoming request by triggering the evaluation on the requests body.

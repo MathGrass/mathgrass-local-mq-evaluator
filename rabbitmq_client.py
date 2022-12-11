@@ -8,6 +8,7 @@ import pika
 class MessageQueueMiddleware:
     """ This class manages any connections with the evaluator.
     """
+
     def __init__(self, broker_host: str):
         """ Initialize a MessageQueueMiddleWare instance.
 
@@ -49,6 +50,7 @@ class MessageQueueMiddleware:
         """
         self.channel.basic_publish(exchange='', routing_key=queue, body=msg)
         logging.info(f"Published {msg} on {queue}!")
+        # TODO websockets: listen in webapp
 
 
 def build_answer_queue_msg(request_id: int, is_correct: bool) -> Dict:
